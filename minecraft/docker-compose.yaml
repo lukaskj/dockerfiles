@@ -1,0 +1,13 @@
+services:
+  minecraft-server:
+    image: eclipse-temurin:17-jre-alpine
+    environment:
+      - VERSION=1.19.3
+      - MEMORYSIZE=1G
+      - PAPERMC_FLAGS="--nojline"
+    ports:
+      - 25565:25565
+    volumes:
+      - ./scripts:/opt/minecraft/scripts:rw
+      - ./data:/data:rw       
+    command: sh /opt/minecraft/scripts/build-and-run.sh
