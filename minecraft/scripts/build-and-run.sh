@@ -1,5 +1,4 @@
 #/bin/sh
-echo "ASDASDASDASD"
 cd /opt/minecraft
 
 export MCVERSION="${VERSION:-1.19.3}"
@@ -12,6 +11,9 @@ export JAVAFLAGS=${JAVA_FLAGS:-"-Dlog4j2.formatMsgNoLookups=true -XX:+UseG1GC -X
 
 # Set PaperMC Flags
 export PAPERMCFLAGS=${PAPERMC_FLAGS:-"--nojline"}
+
+export PUID=${USER_ID:-1000}
+export PGID=${GROUP_ID:-1000}
 
 
 echo "##########################"
