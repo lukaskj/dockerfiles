@@ -22,19 +22,30 @@ echo "##########################"
 apk update && apk upgrade --available && sync && apk add curl jq wget
 
 
-echo "################"
-echo "# Install gosu #"
-echo "################"
+FILE=/usr/local/bin/gosu
+if [ ! -f "$FILE" ]; then
+  echo "################"
+  echo "# Install gosu #"
+  echo "################"
+
+  sh /opt/minecraft/scripts/getpaperserver.sh ${MCVERSION}
+fi
 wget -q -O /usr/local/bin/gosu https://github.com/tianon/gosu/releases/download/$GOSUVERSION/gosu-amd64
 chmod +x /usr/local/bin/gosu
 echo Done!
 echo
 
-echo "####################"
-echo "# Install Paper MC #"
-echo "####################"
-sh /opt/minecraft/scripts/getpaperserver.sh ${MCVERSION}
 
+FILE=/opt/minecraft/paper.jar
+if [ ! -f "$FILE" ]; then
+  echo "####################"
+  echo "# Install Paper MC #"
+  echo "####################"
+
+  sh /opt/minecraft/scripts/getpaperserver.sh ${MCVERSION}
+fi
+
+echo 
 
 echo "################"
 echo "# Run Paper MC #"
