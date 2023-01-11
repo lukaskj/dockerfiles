@@ -28,12 +28,11 @@ if [ ! -f "$FILE" ]; then
   echo "# Install gosu #"
   echo "################"
 
-  sh /opt/minecraft/scripts/getpaperserver.sh ${MCVERSION}
+  wget -q -O /usr/local/bin/gosu https://github.com/tianon/gosu/releases/download/$GOSUVERSION/gosu-amd64
+  chmod +x /usr/local/bin/gosu
+  echo Done!
+  echo
 fi
-wget -q -O /usr/local/bin/gosu https://github.com/tianon/gosu/releases/download/$GOSUVERSION/gosu-amd64
-chmod +x /usr/local/bin/gosu
-echo Done!
-echo
 
 
 FILE=/opt/minecraft/paper.jar
@@ -44,8 +43,6 @@ if [ ! -f "$FILE" ]; then
 
   sh /opt/minecraft/scripts/getpaperserver.sh ${MCVERSION}
 fi
-
-echo 
 
 echo "################"
 echo "# Run Paper MC #"
