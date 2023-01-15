@@ -1,0 +1,15 @@
+services:
+  terraria:
+    image: mono:6-slim
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    environment:
+      - SERVER_VERSION=1449
+      - LOGPATH=/terraria/logs
+    ports:
+      - 7777:7777
+    volumes:
+      - ./serverconfig.txt:/terraria/serverconfig.txt:r
+      - ./scripts/bootstrap.sh:/terraria/bootstrap.sh:r
+      - ./data/worlds:/terraria/worlds:rw
+    command: "bash /terraria/bootstrap.sh"
