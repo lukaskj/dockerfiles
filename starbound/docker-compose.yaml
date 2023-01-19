@@ -1,0 +1,14 @@
+services:
+  starbound:
+    image: steamcmd/steamcmd:ubuntu-22
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    env_file:
+      - .env
+    ports:
+      - 21025:21025
+    volumes:
+      - ./starbound_server.config:/starbound/storage/starbound_server.config:rw
+      - ./scripts/bootstrap.sh:/starbound/bootstrap.sh:r
+      - ./data/universe:/starbound/storage/universe:rw
+    entrypoint: "sh /starbound/bootstrap.sh"
