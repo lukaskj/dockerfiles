@@ -3,7 +3,7 @@ services:
     image: eclipse-temurin:17-jre-alpine
     environment:
       - VERSION=1.19.3
-      - MEMORYSIZE=1G
+      - MEMORY_SIZE=1G
       - PAPERMC_FLAGS="--nojline"
     ports:
       - 25565:25565
