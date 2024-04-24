@@ -17,9 +17,9 @@ export PGID=${GROUP_ID:-1000}
 
 
 echo "##########################"
-echo "# Update alpine packages #"
+echo "# Update packages #"
 echo "##########################"
-apk update && apk upgrade --available && sync && apk add curl jq wget
+apt-get update && apt-get install -y curl jq wget
 
 
 FILE=/usr/local/bin/gosu
