@@ -44,8 +44,8 @@ if [ ! -f "$FILE" ]; then
   sh /opt/minecraft/scripts/getpaperserver.sh ${MCVERSION}
 fi
 
-echo "################"
-echo "# Run Paper MC #"
-echo "################"
+echo "#################"
+echo "# Run MC Server #"
+echo "#################"
 mkdir -p /data && cd /data
 sh /opt/minecraft/scripts/docker-entrypoint.sh
