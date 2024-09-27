@@ -1,14 +1,17 @@
 services:
   minecraft-server:
-    image: eclipse-temurin:17-jre-jammy
+    image: eclipse-temurin:21-jre-jammy
     container_name: minecraft
-    environment:
-      - VERSION=1.20.1
-      - MEMORY_SIZE=1G
-      - PAPERMC_FLAGS="--nojline"
+    env_file:
+      - .env
     ports:
       - 25565:25565
     volumes:
       - ./scripts:/opt/minecraft/scripts:rw
       - ./data:/data:rw
     command: sh /opt/minecraft/scripts/build-and-run.sh
+
+networks:
+  default:
+    external: true
+    name: proxy
