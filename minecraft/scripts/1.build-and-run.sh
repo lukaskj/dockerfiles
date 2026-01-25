@@ -1,8 +1,9 @@
-#/bin/sh
+#!/usr/bin/env bash
+
 cd /opt/minecraft
 
-export MCVERSION="${VERSION:-1.19.3}"
-export GOSUVERSION="${GOSU_VERSION:-1.17}"
+export MINECRAFT_VERSION="${VERSION:-1.21.11}"
+export GOSUVERSION="${GOSU_VERSION:-1.19}"
 
 export MEMORYSIZE="${MEMORY_SIZE:-1G}"
 
@@ -21,19 +22,19 @@ echo "# Updating packages #"
 echo "#####################"
 apt-get update && apt-get install -y curl jq wget
 
-sh /opt/minecraft/scripts/install-gosu.sh ${GOSUVERSION}
+bash /opt/minecraft/scripts/2.install-gosu.sh ${GOSUVERSION}
 
-FILE=/opt/minecraft/paper.jar
+FILE=/opt/minecraft/server.jar
 if [ ! -f "$FILE" ]; then
   echo "######################################"
-  echo "# Installing Paper MC version $MCVERSION #"
+  echo "# Installing Paper MC version $MINECRAFT_VERSION #"
   echo "######################################"
 
-  sh /opt/minecraft/scripts/getpaperserver.sh ${MCVERSION}
+  bash /opt/minecraft/scripts/3.getpaperserver.sh ${MINECRAFT_VERSION}
 fi
 
 echo "####################"
 echo "# Runing MC Server #"
 echo "####################"
 mkdir -p /data && cd /data
-sh /opt/minecraft/scripts/docker-entrypoint.sh
+bash /opt/minecraft/scripts/4.docker-entrypoint.sh

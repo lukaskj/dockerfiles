@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
 set -e
 
 export TEMP_ARCH=$(dpkg --print-architecture)

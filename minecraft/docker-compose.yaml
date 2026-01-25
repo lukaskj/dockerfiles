@@ -9,7 +9,7 @@ services:
     volumes:
       - ./scripts:/opt/minecraft/scripts:rw
       - ./data:/data:rw
-    command: sh /opt/minecraft/scripts/build-and-run.sh
+    command: ["bash", "/opt/minecraft/scripts/1.build-and-run.sh"]
 
 networks:
   default:

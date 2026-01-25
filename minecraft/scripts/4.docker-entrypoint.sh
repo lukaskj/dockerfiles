@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
 set -e
 
 DOCKER_USER='dockeruser'
@@ -20,4 +21,4 @@ if ! id "$DOCKER_USER" >/dev/null 2>&1; then
 fi
 
 export HOME=/home/$DOCKER_USER
-exec gosu $DOCKER_USER:$DOCKER_GROUP java -jar -Xms$MEMORYSIZE -Xmx$MEMORYSIZE $JAVAFLAGS /opt/minecraft/paper.jar $PAPERMCFLAGS nogui
+exec gosu $DOCKER_USER:$DOCKER_GROUP java -jar -Xms$MEMORYSIZE -Xmx$MEMORYSIZE $JAVAFLAGS /opt/minecraft/server.jar $PAPERMCFLAGS nogui
