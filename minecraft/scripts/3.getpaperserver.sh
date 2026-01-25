@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eox pipefail
+set -e
 
 # https://docs.papermc.io/misc/downloads-service/
 
